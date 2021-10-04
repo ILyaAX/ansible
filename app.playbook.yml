@@ -61,5 +61,5 @@
 
   - name: Copy webapp-file
     copy:
-      src: ./app/hello-1.0.war
+      src: /home/app/hello-1.0.war
       dest: /var/lib/tomcat9/webapps/hello-1.0.war
