@@ -4,10 +4,13 @@
 
   tasks:
 
+  - name: apt update
+    apt: 
+      update_cache: yes
+
   - name: Ensure tomcat package is present
     apt:
       name: tomcat9
-      update_cash: yes
       state: present
 
   - name: Ensure tomcat is started
@@ -40,7 +43,7 @@
       name: git 
       state: present
 
-  - name: Deploy our awesome application
+  - name: Fetch application on git
     git:
       repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
       dest: /home/app
@@ -49,3 +52,14 @@
     shell: mvn package
     arg:
       chdir: /home/app
+
+  - name: Fetch webapp-file
+    fetch:
+      src: /home/app/hello-1.0.war
+      dest: /home/app/hello-1.0.war
+      flat: yes
+
+  - name: Copy webapp-file
+    copy:
+      src: ./app/hello-1.0.war
+      dest: /var/lib/tomcat9/webapps/hello-1.0.war
