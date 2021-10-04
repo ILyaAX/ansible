@@ -59,6 +59,12 @@
       dest: /home/app/hello-1.0.war
       flat: yes
 
+- name: deploy
+  hosts: web
+  become: yes
+
+  tasks:
+
   - name: Copy webapp-file
     copy:
       src: /home/app/hello-1.0.war
