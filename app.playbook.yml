@@ -50,7 +50,6 @@
 
   - name: build webapp
     shell: mvn package
-    arg:
       chdir: /home/app
 
   - name: Fetch webapp-file
