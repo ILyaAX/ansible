@@ -50,7 +50,7 @@
 
   - name: build webapp
     shell: mvn package
-      chdir: /home/app
+    chdir: /home/app
 
   - name: Fetch webapp-file
     fetch:
