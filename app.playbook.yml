@@ -55,7 +55,7 @@
 
   - name: Fetch webapp-file
     fetch:
-      src: /home/app/hello-1.0.war
+      src: /home/app/target/hello-1.0.war
       dest: /home/app/hello-1.0.war
       flat: yes
 
