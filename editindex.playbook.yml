@@ -1,0 +1,23 @@
+- name: install nginx
+  hosts: web
+  become: yes
+
+  tasks:
+
+  - name: Ensure nginx package is present
+    apt:
+      name: nginx
+      state: present
+
+  tasks:
+  - name: 'replace line'
+    lineinfile:
+      dest: /var/www/index.html
+      regexp: 'Welcome to nginx'
+      line: '<p><script> document.write(new Date().toLocaleDateString()); </script></p>Server=zabbix2.company.com'
+      backrefs: yes
+
+  - name: Ensure nginx is started
+    service:
+      name: nginx
+      state: started
